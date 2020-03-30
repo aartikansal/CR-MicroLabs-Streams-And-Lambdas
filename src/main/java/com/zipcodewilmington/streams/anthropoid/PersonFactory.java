@@ -3,9 +3,10 @@ package com.zipcodewilmington.streams.anthropoid;
 import com.zipcodewilmington.streams.tools.RandomUtils;
 import com.zipcodewilmington.streams.tools.StringUtils;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
@@ -39,7 +40,10 @@ public final class PersonFactory {
      * @return - ArrayList of Person objects
      */ // TODO
     public List<Person> createPersonList(int listSize) {
-        return null;
+        List<Person> people = new ArrayList<>();
+        IntStream.rangeClosed(1, listSize)
+                .forEach((x) -> people.add(createRandomPerson()));
+        return people;
     }
 
 
@@ -48,7 +52,10 @@ public final class PersonFactory {
      * @return - Array of Person objects
      */ // TODO
     public Person[] createPersonArray(int arrayLength) {
-        return null;
+        List<Person> people = new ArrayList<>();
+        IntStream.rangeClosed(1, arrayLength)
+                .forEach((x) -> people.add(createRandomPerson()));
+        return people.toArray(new Person[people.size()]);
     }
 
 
@@ -59,6 +66,9 @@ public final class PersonFactory {
      * @return - Stream representation of collection of Person objects
      */ // TODO
     public Stream<Person> createPersonStream(int streamCount) {
-        return null;
+        List<Person> people = new ArrayList<>();
+        IntStream.rangeClosed(1, streamCount)
+                .forEach((x) -> people.add(createRandomPerson()));
+        return people.stream();
     }
 }
